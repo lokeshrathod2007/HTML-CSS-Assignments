@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SVG Example</title>
+
+<style>
+    body {
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    svg {
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+    }
+
+    .circle {
+        fill: green;
+        stroke: black;
+        stroke-width: 4;
+        transition: 0.3s ease;
+        filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.3));
+    }
+
+    .text {
+        font-size: 40px;
+        font-weight: bold;
+        fill: black;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        font-family: Arial, sans-serif;
+        transition: 0.3s ease;
+    }
+
+    svg:hover .circle {
+        fill: black;
+    }
+
+    svg:hover .text {
+        fill: white;
+    }
+</style>
+</head>
+
+<body>
+
+<svg viewBox="0 0 200 200">
+
+    <!-- Circle -->
+    <circle class="circle" cx="100" cy="100" r="80"></circle>
+
+    <!-- Text -->
+    <text class="text" x="100" y="100">CC</text>
+
+</svg>
+
+</body>
+</html>

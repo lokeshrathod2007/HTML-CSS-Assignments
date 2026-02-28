@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mind & Money Library</title>
+<link rel="stylesheet" href="bookstorestyle.css">
+
+<style>
+.reader{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.85);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+}
+.reader-content{
+    width:85%;height:85%;
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    position:relative;
+}
+.reader iframe{
+    width:100%;height:100%;
+    border:none;
+}
+.close-btn{
+    position:absolute;
+    top:10px;right:15px;
+    background:#e63946;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    cursor:pointer;
+    border-radius:5px;
+}
+.controls{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+.controls input, .controls select{
+    padding:12px 18px;
+    border-radius:30px;
+    border:1px solid #ccc;
+    min-width:230px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📚 Mind & Money Library</h1>
+<p>Philosophy • Self-Help • Wealth • Mindset</p>
+</header>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Library</a>
+<a href="#">Philosophy</a>
+<a href="#">Self-Help</a>
+<a href="#">Wealth</a>
+<a href="#">Mindset</a>
+</nav>
+
+<section class="hero">
+<h2>Upgrade Your Mind, Upgrade Your Life</h2>
+<p>Read powerful books free & online</p>
+</section>
+
+<section>
+<h2 class="section-title">📖 Book Collection</h2>
+
+<div class="controls">
+<input type="text" id="searchInput" placeholder="Search book or author">
+<select id="categoryFilter">
+<option value="all">All Categories</option>
+<option value="Philosophy">Philosophy</option>
+<option value="SelfHelp">Self-Help</option>
+<option value="Money">Money</option>
+<option value="Mindset">Mindset</option>
+</select>
+</div>
+
+<div class="books" id="bookList">
+
+<!-- PHILOSOPHY -->
+<div class="book" data-title="meditations" data-author="marcus aurelius" data-category="Philosophy"
+data-link="https://www.gutenberg.org/files/2680/2680-h/2680-h.htm">
+<img src="https://covers.openlibrary.org/b/id/7222245-L.jpg">
+<h3>Meditations</h3>
+<p>Marcus Aurelius</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+<div class="book" data-title="the republic" data-author="plato" data-category="Philosophy"
+data-link="https://www.gutenberg.org/files/1497/1497-h/1497-h.htm">
+<img src="https://covers.openlibrary.org/b/id/8231997-L.jpg">
+<h3>The Republic</h3>
+<p>Plato</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+<div class="book" data-title="ethics" data-author="aristotle" data-category="Philosophy"
+data-link="https://www.gutenberg.org/files/8438/8438-h/8438-h.htm">
+<img src="https://covers.openlibrary.org/b/id/8232006-L.jpg">
+<h3>Ethics</h3>
+<p>Aristotle</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+<!-- SELF HELP -->
+<div class="book" data-title="as a man thinketh" data-author="james allen" data-category="SelfHelp"
+data-link="https://www.gutenberg.org/files/4507/4507-h/4507-h.htm">
+<img src="https://covers.openlibrary.org/b/id/7222242-L.jpg">
+<h3>As a Man Thinketh</h3>
+<p>James Allen</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+<div class="book" data-title="the art of war" data-author="sun tzu" data-category="SelfHelp"
+data-link="https://www.gutenberg.org/files/132/132-h/132-h.htm">
+<img src="https://covers.openlibrary.org/b/id/7222246-L.jpg">
+<h3>The Art of War</h3>
+<p>Sun Tzu</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+<!-- MONEY -->
+<div class="book" data-title="the science of getting rich" data-author="wallace wattles" data-category="Money"
+data-link="https://www.gutenberg.org/files/59844/59844-h/59844-h.htm">
+<img src="https://covers.openlibrary.org/b/id/7222243-L.jpg">
+<h3>The Science of Getting Rich</h3>
+<p>Wallace D. Wattles</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+<div class="book" data-title="acres of diamonds" data-author="russell conwell" data-category="Money"
+data-link="https://www.gutenberg.org/files/368/368-h/368-h.htm">
+<img src="https://covers.openlibrary.org/b/id/8232011-L.jpg">
+<h3>Acres of Diamonds</h3>
+<p>Russell Conwell</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+<!-- MINDSET -->
+<div class="book" data-title="the power of concentration" data-author="theron dumont" data-category="Mindset"
+data-link="https://www.gutenberg.org/files/20448/20448-h/20448-h.htm">
+<img src="https://covers.openlibrary.org/b/id/8232014-L.jpg">
+<h3>The Power of Concentration</h3>
+<p>Theron Q. Dumont</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+<div class="book" data-title="self reliance" data-author="ralph waldo emerson" data-category="Mindset"
+data-link="https://www.gutenberg.org/files/16643/16643-h/16643-h.htm">
+<img src="https://covers.openlibrary.org/b/id/8232017-L.jpg">
+<h3>Self-Reliance</h3>
+<p>Ralph Waldo Emerson</p>
+<button onclick="openBook(this)">Read</button>
+</div>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 Mind & Money Library | Read • Reflect • Rise</p>
+</footer>
+
+<!-- READER -->
+<div class="reader" id="reader">
+<div class="reader-content">
+<button class="close-btn" onclick="closeBook()">Close</button>
+<iframe id="bookFrame"></iframe>
+</div>
+</div>
+
+<script>
+const searchInput=document.getElementById("searchInput");
+const categoryFilter=document.getElementById("categoryFilter");
+const books=document.querySelectorAll(".book");
+
+searchInput.addEventListener("input",filterBooks);
+categoryFilter.addEventListener("change",filterBooks);
+
+function filterBooks(){
+    const text=searchInput.value.toLowerCase();
+    const cat=categoryFilter.value;
+
+    books.forEach(book=>{
+        const title=book.dataset.title;
+        const author=book.dataset.author;
+        const category=book.dataset.category;
+
+        const matchText=title.includes(text)||author.includes(text);
+        const matchCat=cat==="all"||category===cat;
+
+        book.style.display=(matchText&&matchCat)?"block":"none";
+    });
+}
+
+function openBook(btn){
+    const link=btn.parentElement.dataset.link;
+    document.getElementById("bookFrame").src=link;
+    document.getElementById("reader").style.display="flex";
+}
+function closeBook(){
+    document.getElementById("bookFrame").src="";
+    document.getElementById("reader").style.display="none";
+}
+</script>
+
+</body>
+</html>
